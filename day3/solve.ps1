@@ -52,12 +52,10 @@ $lengths = Get-Numbers -FilePath "day3\input.txt"
 $triplets = Group-ArrayItems -GroupSize 3 -Objects $lengths
 $triangles = Measure-Triangles -ListOfSides $triplets
 
-$triangles
-
+Write-Output "Part 1: $triangles"
 
 $flattened = Merge-Columns -Groups $triplets
 $triplets = Group-ArrayItems -GroupSize 3 -Objects $flattened
 $triangles = Measure-Triangles -ListOfSides $triplets
 
-$triangles
-
+Write-Output "Part 2: $triangles"
