@@ -12,9 +12,12 @@ function Get-Numbers {
 }
 
 function Group-ArrayItems {
-    param ($GroupSize, $Objects)
+    param (
+        [Alias('GroupSize')]$n, 
+        $Objects
+        )
 
-    $n = $GroupSize
+    # $n = $GroupSize
     $groups = New-Object System.Collections.ArrayList
     for ($i=0; $i -lt $Objects.Length; $i=$i+$n) {
         [void]$groups.Add($Objects[$i..($i+$n-1)])
