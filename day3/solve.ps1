@@ -51,7 +51,7 @@ function Measure-Triangles {
     return $count
 }
 
-$lengths = Get-Numbers -FilePath "day3\input.txt"
+$lengths = Get-Numbers -FilePath "$PSScriptRoot\input.txt"
 $triplets = Group-ArrayItems -GroupSize 3 -Objects $lengths
 $triangles = Measure-Triangles -ListOfSides $triplets
 

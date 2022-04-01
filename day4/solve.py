@@ -22,7 +22,7 @@ def decrypt(cipher, shift):
     return msg
 
 
-with open('day4/input.txt') as f:
+with open('input.txt') as f:
     lines = f.read().splitlines()
 
 

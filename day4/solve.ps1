@@ -1,11 +1,16 @@
 
-$lines = Get-Content -Path 'day4/input.txt'
+$lines = Get-Content -Path "$PSScriptRoot\input.txt"
 
 $ids = $lines | Select-String -Pattern '\d+' -AllMatches
 $ids = $ids.Matches.Value | ForEach-Object { [int]$_ }
 
 $checksums = $lines | Select-String -Pattern '\[(\w+)\]' -AllMatches
 $checksums = $checksums.Matches | ForEach-Object { $_.Groups[1].Value }
+
+$ltrs = $lines.ForEach({
+    $_ -Split '-' | Select-Object -SkipLast 1 | Join-String
+})
+
 
 function Get-Checksum {
     param (
@@ -16,7 +21,7 @@ function Get-Checksum {
     begin {
         $checksums = New-Object System.Collections.ArrayList
         $CustomSort = @{Expression = 'Count'; Descending = $true},
-                       @{Expression = 'Name'; Descending = $false}
+                      @{Expression = 'Name'; Descending = $false}
     }
     process {
         $ltrs = $Data -Split '-' | Select-Object -SkipLast 1 | Join-String
@@ -66,3 +71,4 @@ for ($i=0; $i -lt $lines.count; $i++) {
     }
 }
 Write-Output "Part 2: $sectorid"
+
