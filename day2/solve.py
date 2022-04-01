@@ -47,5 +47,3 @@ with open('input.txt') as f:
 
 print(decode(keypad1(), data))
 print(decode(keypad2(), data))
-
-print(data)
