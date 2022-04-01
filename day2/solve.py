@@ -36,7 +36,7 @@ def decode(pad, data):
 			else:
 				continue
 		
-		code += pad[(x, y)]1032
+		code += pad[(x, y)]
 
 	return code
 
@@ -47,3 +47,5 @@ with open('input.txt') as f:
 
 print(decode(keypad1(), data))
 print(decode(keypad2(), data))
+
+print(data)
