@@ -31,14 +31,14 @@ def get_babs(string):
         if sub[0] == sub[2] and sub[0] != sub[1]:
             return True
         return False
-    abas = set([ sub for sub in subs if check(sub) ])
-    babs = [ (aba[1] + aba[0] + aba[1]) for aba in abas ]
+    abas = set(filter(check, subs))
+    babs = [ f'{b}{a}{b}' for a, b, _ in abas ]
     return babs
 
 def ssl(entry):
     supernets, hypernets = parse_ipv7(entry)
     babs = sum([ get_babs(supernet) for supernet in supernets ], [])
-    ssl = any([ bab in hypernet for bab in babs for hypernet in hypernets ])
+    ssl = any([ (bab in hypernet) for bab in babs for hypernet in hypernets ])
     return True if ssl else False
 
 
