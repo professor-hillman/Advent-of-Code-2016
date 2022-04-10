@@ -9,7 +9,7 @@ def parse_ipv7(entry):
     for hypernet in hypernets:
         entry = entry.replace(hypernet, '')
     supernets = entry.split('[]')
-    return supernets, hypernets   
+    return supernets, hypernets
 
 def abba(string):
     subs = [ string[i:i+4] for i in range(0, len(string) - 3) ]
@@ -39,7 +39,7 @@ def ssl(entry):
     supernets, hypernets = parse_ipv7(entry)
     babs = sum([ get_babs(supernet) for supernet in supernets ], [])
     ssl = any([ (bab in hypernet) for bab in babs for hypernet in hypernets ])
-    return True if ssl else False
+    return ssl
 
 
 with open('input.txt') as f:
